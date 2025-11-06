@@ -17,7 +17,7 @@ Sigma_max = 1
 Porosity_COL_INDEX = 2
 Fatigue_Life = 3
 
-# 设置随机种子以保证可复现
+
 def set_seed(seed=42):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
@@ -27,7 +27,7 @@ def set_seed(seed=42):
 
 set_seed(42)
 
-# 选择设备（CPU/GPU）
+
 device = torch.device("cpu")
 
 
@@ -105,7 +105,7 @@ timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 prediction_filename = os.path.join(export_folder, f"{timestamp}_prediction_results.csv")
 metrics_filename   = os.path.join(export_folder, f"{timestamp}_metrics_results.csv")
 
-# 导出预测与真实
+
 export_data = np.column_stack((Y_true_original, Y_pred_original))
 export_df = pd.DataFrame(export_data, columns=["True_Value", "Predicted_Value"])
 export_df.to_csv(prediction_filename, index=False)
@@ -122,3 +122,4 @@ metrics_df = pd.DataFrame([metrics_data])
 metrics_df.to_csv(metrics_filename, index=False)
 
 print(f"Results exported to:\n  {prediction_filename}\n  {metrics_filename}")
+
